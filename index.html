@@ -1,123 +1,86 @@
 <!DOCTYPE html>
-<html lang="en" dir="ltr">
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>Jassim Mohammed | Park City</title>
-<meta name="description" content="Jassim Mohammed, full-stack developer from Iraq. A 3D amusement-park city where every ride is a part of his portfolio.">
-<link rel="icon" href="data:,"><meta name="theme-color" content="#5b86c9">
+<title>جاسم محمد | حديقة المشاريع</title>
+<meta name="description" content="جاسم محمد، مطوّر Full-Stack من العراق. جزيرة ألعاب ثلاثية الأبعاد، كل لعبة بيها جزء من أعماله.">
+<link rel="icon" href="data:,"><meta name="theme-color" content="#F6B27A">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
-:root{--g:#0f172acc;--b:#ffffff1f;--t:#e7ecf5;--m:#94a3b8;--mono:ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace}
-*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;font-family:system-ui,"Segoe UI",Tahoma,sans-serif;color:var(--t)}
-body{background:linear-gradient(#4f7fc4 0%,#8fb1df 45%,#f3d2b3 100%);transition:background 2s}
-body.night{background:linear-gradient(#060b1f 0%,#18224a 55%,#3b2d55 100%)}
+:root{--card:#FFF6E9;--ink:#2B2D42;--terra:#D9673E;--teal:#2A9D8F;--cream:#F7E9D3}
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;font-family:Tajawal,"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--ink)}
+body{background:linear-gradient(to top,#F6B27A 0%,#E9B8A0 40%,#C9B6D9 100%)}
 #c{position:fixed;inset:0;display:block;touch-action:none}
-.g{background:var(--g);border:1px solid var(--b);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-radius:12px}
-#id{position:fixed;top:10px;inset-inline-start:10px;display:flex;gap:10px;align-items:center;padding:8px 14px 8px 8px;z-index:6}
-#id .lg{width:30px;height:30px;border-radius:8px;border:1px solid #2dd4bf88;display:grid;place-items:center;font:700 12px var(--mono);color:#5eead4}
-#id b{display:block;font-size:14px}#id small{color:var(--m);font-size:11px}
-#tr{position:fixed;top:10px;inset-inline-end:10px;display:flex;gap:6px;z-index:6}
-#tr button,#ctl button{font:12px var(--mono);color:var(--t);padding:8px 11px;cursor:pointer;transition:.2s}
-#tr button:hover,#ctl button:hover{border-color:#5eead4;color:#5eead4;transform:translateY(-1px)}
-#places{position:fixed;top:62px;inset-inline-start:10px;width:200px;padding:10px 6px;z-index:6;max-height:calc(100vh - 150px);overflow:auto;transition:.4s}
-#places.hide{opacity:0;transform:translateX(-20px);pointer-events:none}
-#places h6{margin:2px 10px 8px;font:10px var(--mono);letter-spacing:.15em;color:var(--m)}
-.pl{display:block;width:100%;text-align:start;background:none;border:1px solid transparent;border-radius:8px;color:var(--t);padding:6px 10px;cursor:pointer;font:inherit;transition:.2s;animation:in .5s both}
-.pl:hover{background:#ffffff0d}.pl.on{background:#f59e0b1f;border-color:#f59e0b66}
-.pl b{font-size:12.5px;font-weight:500;display:flex;align-items:center;gap:8px}.pl small{display:block;color:var(--m);font-size:10.5px;margin-inline-start:16px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.dot{width:8px;height:8px;border-radius:50%;flex:none;box-shadow:0 0 8px currentColor}
-@keyframes in{from{opacity:0;transform:translateX(-10px)}}
-#labels{position:fixed;inset:0;pointer-events:none;z-index:4}
-.lb{position:absolute;left:0;top:0;pointer-events:auto;cursor:pointer;white-space:nowrap;font-size:11.5px;padding:4px 10px;border-radius:999px;background:#0f172ad9;border:1px solid var(--b);display:flex;gap:6px;align-items:center;transition:background .2s,transform .2s;will-change:transform}
-.lb:hover{background:#1e293b;border-color:#fff6}
-#panel{position:fixed;top:62px;inset-inline-end:10px;width:min(370px,calc(100vw - 20px));max-height:calc(100vh - 80px);overflow:auto;padding:16px 18px;z-index:7;opacity:0;transform:translateX(30px);pointer-events:none;transition:.45s cubic-bezier(.2,.8,.2,1)}
-[dir=rtl] #panel{transform:translateX(-30px)}
-#panel.show{opacity:1;transform:none;pointer-events:auto}
-#panel .k{font:10px var(--mono);letter-spacing:.15em;color:var(--m);display:flex;gap:6px;align-items:center}
-#panel h2{margin:6px 0 2px;font-size:22px}#panel .sub{color:var(--m);font-size:13px;margin-bottom:12px}
-#panel h5{font:10px var(--mono);letter-spacing:.15em;color:var(--m);margin:14px 0 6px}
-#panel p,#panel li{font-size:13.5px;line-height:1.6}#panel ul{padding-inline-start:18px;margin:4px 0}#panel li::marker{color:#f59e0b}
-#panel a{color:#5eead4}.chip{display:inline-block;border:1px solid var(--b);border-radius:6px;padding:2px 8px;margin:3px 3px 0 0;font:11.5px var(--mono)}
-.btn{display:inline-block;border:1px solid #f59e0b88;background:#f59e0b1a;color:#fbbf24!important;border-radius:8px;padding:7px 12px;text-decoration:none;font-size:13px;margin:4px 0}
-.ph{color:#facc15;border:1px dashed #facc15;padding:1px 6px;border-radius:6px;font-size:12.5px}
-.card{border:1px solid var(--b);border-radius:10px;padding:9px 11px;margin:7px 0;font-size:13px}
-#x{position:absolute;top:12px;inset-inline-end:12px;width:30px;height:30px;color:var(--t);cursor:pointer;font-size:16px}
-#hint{position:fixed;bottom:12px;left:50%;transform:translateX(-50%);padding:7px 14px;font:11.5px var(--mono);color:#cbd5e1;z-index:5;white-space:nowrap;max-width:94vw;overflow:hidden;text-overflow:ellipsis}
-#ctl{position:fixed;bottom:12px;inset-inline-start:10px;display:flex;gap:2px;padding:4px;z-index:6}#ctl button{background:none;border:1px solid transparent;border-radius:8px}
-#load{position:fixed;inset:0;z-index:30;display:flex;flex-direction:column;align-items:center;justify-content:center;background:linear-gradient(#4f7fc4,#f3d2b3);transition:opacity .9s}
-#load .k{font:11px var(--mono);letter-spacing:.3em;color:#0f172a99}#load h1{margin:10px 0 4px;font-size:clamp(28px,6vw,52px);color:#0f172a}#load p{color:#0f172aaa;margin:0 0 18px}
-#bar{width:240px;height:3px;background:#0f172a22;border-radius:3px;overflow:hidden}#bar i{display:block;height:100%;width:0;background:#0f172a;transition:width .3s}
-#go{margin-top:20px;font:12px var(--mono);padding:10px 18px;border-radius:10px;border:1px solid #0f172a44;background:#0f172a;color:#fff;cursor:pointer;opacity:0;transition:.4s}
-#go.r{opacity:1}
-#flat{display:none;position:fixed;inset:0;overflow:auto;padding:70px 14px 40px;z-index:5;background:linear-gradient(#0f172a,#1e293b)}
-#flat .w{max-width:780px;margin:auto}#flat section{margin-bottom:14px;padding:14px 18px}#flat h2{margin:0 0 6px;display:flex;gap:8px;align-items:center}
-body.flat #flat{display:block}body.flat #places,body.flat #labels,body.flat #panel,body.flat #hint,body.flat #ctl{display:none}
-@media(max-width:760px){#places{display:none}#hint{font-size:10px}#panel{top:auto;bottom:60px;max-height:55vh}#id small{display:none}#tr button{padding:7px 8px}}
+#nav{position:fixed;top:14px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:5;flex-wrap:wrap;justify-content:center;max-width:96vw}
+#nav button{font:700 15px Tajawal,sans-serif;color:var(--ink);background:var(--card);border:0;border-radius:999px;padding:9px 18px;box-shadow:0 4px 14px rgba(43,45,66,.15);cursor:pointer;transition:transform .15s,background .15s}
+#nav button:hover,#nav button.on{background:var(--terra);color:#fff;transform:translateY(-2px)}
+#brand{position:fixed;top:14px;right:16px;z-index:5;background:var(--card);border-radius:16px;padding:8px 14px;box-shadow:0 4px 14px rgba(43,45,66,.15)}
+#brand b{display:block;font-size:16px}#brand small{font-size:12px;opacity:.7}
+#back{position:fixed;top:72px;left:50%;transform:translateX(-50%);z-index:5;display:none;font:700 14px Tajawal;background:var(--ink);color:#fff;border:0;border-radius:999px;padding:8px 18px;cursor:pointer}
+#tag{position:fixed;z-index:4;pointer-events:none;background:var(--card);border-radius:10px;padding:4px 10px;font-weight:700;font-size:14px;box-shadow:0 4px 12px rgba(43,45,66,.2);display:none;transform:translate(-50%,-130%)}
+.card{position:fixed;top:50%;right:24px;width:380px;max-height:84vh;overflow:auto;background:var(--card);border-radius:20px;box-shadow:0 8px 24px rgba(43,45,66,.18);padding:26px 24px;z-index:6;transform:translate(120%,-50%);transition:transform .3s ease}
+.card.open{transform:translate(0,-50%)}
+.card h2{margin:0 0 12px;font-size:30px;font-weight:800}
+.x{position:absolute;top:14px;left:14px;width:34px;height:34px;border-radius:50%;border:0;background:var(--terra);color:#fff;font-size:18px;cursor:pointer}
+.chip{display:inline-block;background:var(--cream);border-radius:8px;padding:5px 10px;margin:3px;font-size:13px;font-weight:500;direction:ltr;cursor:default;transition:transform .15s}
+.chip:hover{transform:scale(1.08);background:#F4B942}
+.btn{display:block;text-align:center;background:#EADBC4;color:var(--ink);text-decoration:none;font-weight:700;border-radius:12px;padding:12px;margin-top:14px;border:0;width:100%;font:700 16px Tajawal;cursor:pointer}
+.btn.pri{background:var(--terra);color:#fff}
+.pl{list-style:none;padding:0;margin:8px 0}.pl li{padding:8px 10px;border-radius:10px;cursor:pointer;display:flex;justify-content:space-between;gap:8px;direction:ltr}
+.pl li:hover,.pl li.on{background:var(--cream)}.pl li span{font-size:12px;opacity:.6}
+.grp{margin:10px 0}.grp h4{margin:0 0 6px;font-size:16px}
+.row{display:flex;align-items:center;gap:10px;padding:10px;border-radius:12px;background:var(--cream);margin:8px 0}
+.row .ic{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:#fff;font-weight:800}
+.row.soon{opacity:.55}
+.av{width:64px;height:64px;border-radius:50%;background:var(--teal);color:#fff;display:grid;place-items:center;font-size:26px;font-weight:800;float:left;margin:0 0 8px 12px}
+#tl{position:fixed;left:50%;bottom:24px;transform:translate(-50%,160%);width:min(640px,92vw);background:var(--card);border-radius:20px;box-shadow:0 8px 24px rgba(43,45,66,.18);padding:20px 26px;z-index:6;transition:transform .3s}
+#tl.open{transform:translate(-50%,0)}
+#tl h2{text-align:center;margin:0 0 14px;font-size:28px}
+.line{display:flex;justify-content:space-between;position:relative;margin:24px 10px 6px}
+.line:before{content:"";position:absolute;top:7px;left:0;right:0;height:3px;background:#5E4636}
+.dot{position:relative;text-align:center;font-size:13px;width:60px}
+.dot i{display:block;margin:0 auto 6px;width:16px;height:16px;border-radius:50%;background:#5E4636;transition:transform .2s,background .2s}
+.dot.on i{background:var(--terra);transform:scale(1.4)}
+#hint{position:fixed;bottom:14px;right:16px;font-size:13px;background:#FFF6E9cc;border-radius:10px;padding:6px 12px;z-index:3}
+#load{position:fixed;inset:0;display:grid;place-items:center;background:linear-gradient(to top,#F6B27A,#C9B6D9);z-index:9;font-size:22px;font-weight:800;transition:opacity .6s}
+@media(max-width:767px){.card{top:auto;bottom:0;right:0;left:0;width:auto;height:70vh;max-height:70vh;border-radius:20px 20px 0 0;transform:translateY(110%)}.card.open{transform:translateY(0)}#brand{display:none}#nav{top:8px}#nav button{padding:7px 12px;font-size:13px}#hint{display:none}}
 </style>
-<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.160.0/examples/jsm/"}}</script>
 </head>
 <body>
-<div id="load"><div class="k" id="lk">IRAQ · PARK CITY</div><h1 id="lh">Jassim Mohammed</h1><p id="lp">Full-Stack Developer</p><div id="bar"><i></i></div><button id="go">Enter the park →</button></div>
+<div id="load">جاري تحميل الجزيرة…</div>
 <canvas id="c"></canvas>
-<div id="labels"></div>
-<div id="id" class="g"><div class="lg">JM</div><div><b id="nm">Jassim Mohammed</b><small id="rl">Full-Stack Developer · Iraq</small></div></div>
-<div id="tr"><button class="g" id="bPl">Places</button><button class="g" id="bDay">☀ Day</button><button class="g" id="bLang">عربي</button><button class="g" id="bGh" onclick="open('https://github.com/jasbx222','_blank')">GitHub</button></div>
-<div id="places" class="g"></div>
-<div id="panel" class="g"><button id="x" class="g">✕</button><div id="pc"></div></div>
-<div id="hint" class="g"></div>
-<div id="ctl" class="g"><button id="rl1" title="rotate">↺</button><button id="hm" title="home">⌂</button><button id="rr1" title="rotate">↻</button></div>
-<div id="flat"><div class="w" id="fc"></div></div>
-<script>
-const GH="https://github.com/jasbx222/";
-// each place: key, color, ride type, en title, en sub, ar title, ar sub, body builder
-const PR={
-dawwerli:["Dawwerli","ASP.NET Core 8 · PostgreSQL · Flutter",["dawwerli-api","dawwerli-app","dawwerli-dashboard-demo","dawwerli-seller-demo"],"Backend API in ASP.NET Core 8 with PostgreSQL, a Flutter mobile app, and demos for the seller portal and admin dashboard.","واجهة برمجية بـ ASP.NET Core 8 وPostgreSQL، وتطبيق موبايل بـ Flutter، وعروض لبوابة البائع ولوحة الإدارة."],
-delivery:["Delivery Management System","ASP.NET",["Delivery-Management-System"],"A complete delivery management system built with ASP.NET.","نظام متكامل لإدارة التوصيل مبني بـ ASP.NET."],
-qicard:["Qi Card Payment Store","ASP.NET · C#",["Qi-Card-Payment-Integrate-Test-With-Asp.net"],"A demo online store that integrates the Qi Card payment gateway with an ASP.NET backend.","متجر إلكتروني تجريبي يربط بوابة الدفع كي كارد مع باك اند ASP.NET."],
-clinic:["Clinic System","Laravel · React",["Clinic-Management-System-Backend","Clinic-LandingPage-Dashboard-Booking"],"Laravel backend for a clinic, with a React landing page, dashboard and booking.","باك اند عيادة بـ Laravel مع صفحة تعريفية ولوحة تحكم وحجز بـ React."],
-airest:["AI Restaurant Agent","Laravel · React",["Ai-Agent-resturant"],"An AI-assisted restaurant app built with Laravel and React.","تطبيق مطعم مدعوم بالذكاء الاصطناعي بـ Laravel وReact."],
-payroll:["Payroll Payment App","React · Laravel",["payroll-payment-app-","payroll-backend-payment-service"],"A smart payroll disbursement app with its own payment backend service.","تطبيق ذكي لإدارة صرف الرواتب مع خدمة دفع خلفية."],
-more:["More projects","Laravel · React · Next.js · NestJS · React Native",["Multi-Tenant-Project-Management-System-Laravel","travel-and-hotels-booking-APP-Dashbord","ECommerce-Api","ecommerce-app","chat-app","Real-estate-website","Pos-Caher-system-Asp.net"],"Multi-tenant project management, a travel and hotels dashboard, an e-commerce API with a mobile app, a NestJS chat app, a Next.js real-estate site and an ASP.NET POS.","إدارة مشاريع متعددة المستأجرين، لوحة سفر وفنادق، واجهة متجر مع تطبيق موبايل، دردشة بـ NestJS، موقع عقارات بـ Next.js، ونظام نقاط بيع بـ ASP.NET."]};
-const SK={"Backend":["Laravel / PHP","ASP.NET Core / C#","NestJS","Node.js","REST · JWT · Swagger"],"Data":["PostgreSQL","MySQL","SQL Server"],"Frontend":["React","Next.js","TypeScript","Vue.js","Redux Toolkit","MUI"],"Mobile":["Flutter / Dart","React Native · Expo"]};
-const PLACES=[
-["about","#f59e0b","ferris",{en:["Ferris Wheel","About me"],ar:["دولاب الهواء","نبذة عني"]}],
-["dawwerli","#14b8a6","coaster",null],["delivery","#f97316","tram",null],["qicard","#38bdf8","drop",null],
-["clinic","#22c55e","pirate",null],["airest","#ef4444","teacups",null],["payroll","#a855f7","bumper",null],["more","#eab308","swings",null],
-["skills","#84cc16","carousel",{en:["Carousel","Skills, one horse each"],ar:["الدوّامة","المهارات"]}],
-["exp","#60a5fa","tent",{en:["Big Top","Experience"],ar:["خيمة السيرك","الخبرة"]}],
-["contact","#2dd4bf","booth",{en:["Game Booth","Contact · come say hi"],ar:["كشك الألعاب","تواصل معي"]}]];
-const RIDE={coaster:["Roller Coaster","القطار السريع"],tram:["Park Tram","ترام المدينة"],drop:["Drop Tower","برج السقوط"],pirate:["Pirate Ship","سفينة القراصنة"],teacups:["Spinning Cups","الفناجين الدوّارة"],bumper:["Bumper Cars","سيارات التصادم"],swings:["Swing Ride","المراجيح الطائرة"]};
-const TX={en:{role:"Full-Stack Developer · Iraq",places:"PLACES",hint:"drag to pan · scroll to zoom · right-drag or Q / E to turn · click anything",enter:"Enter the park →",load:"Building the park…",day:"☀ Day",night:"☾ Night",lang:"عربي",pl:"Places",live:"RIDE",repo:"Open on GitHub ↗",stack:"STACK",repos:"REPOSITORIES",
- about:`<p>Full-stack web developer from Iraq (Baghdad), working mostly with Laravel and React and building scalable web apps. Always learning, always coding.</p><p>Open to remote work.</p><h5>AT A GLANCE</h5><ul><li>67 public repositories on GitHub</li><li>Web apps, REST APIs, admin dashboards and mobile apps</li><li>PHP · C# · TypeScript · Dart</li></ul><a class="btn" href="${GH}" target="_blank">GitHub profile ↗</a>`,
- exp:`<p>Most of my work is public on GitHub: e-commerce, delivery, clinic, payroll, travel and POS systems, from backend APIs to dashboards and mobile apps.</p><h5>WORK HISTORY</h5><div class="card"><span class="ph">PLACEHOLDER</span> Roles and dates, to be added by Jassim.</div>`,
- contact:`<div class="card">GitHub · <a href="${GH}" target="_blank">github.com/jasbx222</a></div><div class="card">Email · <span class="ph">PLACEHOLDER: email</span></div><div class="card">LinkedIn · <span class="ph">PLACEHOLDER: LinkedIn</span></div><div class="card">CV · <span class="ph">PLACEHOLDER: CV link</span></div>`},
-ar:{role:"مطوّر Full-Stack · العراق",places:"الأماكن",hint:"اسحب للتحريك · مرّر للتقريب · زر يمين أو Q / E للتدوير · اضغط أي شيء",enter:"← ادخل المدينة",load:"نبني المدينة…",day:"☀ نهار",night:"☾ ليل",lang:"English",pl:"الأماكن",live:"لعبة",repo:"افتح على GitHub ↗",stack:"التقنيات",repos:"المستودعات",
- about:`<p>مطوّر ويب Full-Stack من العراق (بغداد)، أعمل غالباً بـ Laravel وReact وأبني تطبيقات ويب قابلة للتوسع. أتعلم دائماً وأبرمج دائماً.</p><p>متاح للعمل عن بُعد.</p><h5>باختصار</h5><ul><li>67 مستودعاً عاماً على GitHub</li><li>تطبيقات ويب وواجهات برمجية ولوحات تحكم وتطبيقات موبايل</li><li>PHP · C# · TypeScript · Dart</li></ul><a class="btn" href="${GH}" target="_blank">حسابي على GitHub ↗</a>`,
- exp:`<p>أغلب أعمالي منشورة على GitHub: أنظمة متاجر وتوصيل وعيادات ورواتب وسفر ونقاط بيع، من الباك اند إلى لوحات التحكم وتطبيقات الموبايل.</p><h5>السجل الوظيفي</h5><div class="card"><span class="ph">قيد الإضافة</span> المناصب والتواريخ يضيفها جاسم.</div>`,
- contact:`<div class="card">GitHub · <a href="${GH}" target="_blank">github.com/jasbx222</a></div><div class="card">البريد · <span class="ph">قيد الإضافة: البريد</span></div><div class="card">LinkedIn · <span class="ph">قيد الإضافة</span></div><div class="card">السيرة الذاتية · <span class="ph">قيد الإضافة</span></div>`}};
-let L="en";
-function info(p){const [k,col,type,m]=p;if(m)return {t:m[L][0],s:m[L][1]};const d=PR[k];return {t:d[0],s:(L==="en"?RIDE[type][0]:RIDE[type][1])+" · "+d[1]}}
-function body(k){const t=TX[L];if(t[k])return t[k];
- if(k==="skills")return Object.entries(SK).map(([g,a])=>`<h5>${g.toUpperCase()}</h5>${a.map(s=>`<span class="chip">${s}</span>`).join("")}`).join("");
- const d=PR[k];return `<p>${L==="en"?d[3]:d[4]}</p><h5>${t.stack}</h5>${d[1].split(" · ").map(s=>`<span class="chip">${s}</span>`).join("")}<h5>${t.repos}</h5>${d[2].map(r=>`<div><a href="${GH+r}" target="_blank">${r} ↗</a></div>`).join("")}<br><a class="btn" href="${GH+d[2][0]}" target="_blank">${t.repo}</a>`}
-function render(){const t=TX[L];document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
- nm.textContent=L==="en"?"Jassim Mohammed":"جاسم محمد";rl.textContent=t.role;hint.textContent=t.hint;bLang.textContent=t.lang;bPl.textContent=t.pl;go.textContent=t.enter;
- bDay.textContent=document.body.classList.contains("night")?t.night:t.day;
- places.innerHTML=`<h6>${t.places}</h6>`+PLACES.map((p,i)=>{const f=info(p);return `<button class="pl" data-k="${p[0]}" style="animation-delay:${i*40}ms"><b><span class="dot" style="color:${p[1]};background:${p[1]}"></span>${f.t}</b><small>${f.s}</small></button>`}).join("");
- places.querySelectorAll(".pl").forEach(b=>b.onclick=()=>window.go(b.dataset.k));
- fc.innerHTML=PLACES.map(p=>{const f=info(p);return `<section class="g"><h2><span class="dot" style="color:${p[1]};background:${p[1]}"></span>${f.t}</h2><div style="color:var(--m);font-size:13px">${f.s}</div>${body(p[0])}</section>`}).join("");
- window.relabel&&window.relabel();if(window.cur)openP(window.cur)}
-function openP(k){window.cur=k;const p=PLACES.find(q=>q[0]===k),f=info(p);
- pc.innerHTML=`<div class="k"><span class="dot" style="color:${p[1]};background:${p[1]}"></span>${TX[L].live}</div><h2>${f.t}</h2><div class="sub">${f.s}</div>${body(k)}`;panel.classList.add("show");panel.scrollTop=0;
- places.querySelectorAll(".pl").forEach(b=>b.classList.toggle("on",b.dataset.k===k))}
-function closeP(){panel.classList.remove("show");window.cur=null;places.querySelectorAll(".pl").forEach(b=>b.classList.remove("on"))}
-x.onclick=()=>{closeP();window.home&&window.home()};
-bLang.onclick=()=>{L=L==="en"?"ar":"en";render()};
-bPl.onclick=()=>places.classList.toggle("hide");
+<div id="brand"><b>جاسم محمد</b><small>Full-Stack Developer · العراق</small></div>
+<nav id="nav">
+<button data-s="about">عنّي</button><button data-s="projects">المشاريع</button><button data-s="skills">المهارات</button><button data-s="experience">الخبرة</button><button data-s="contact">تواصل</button>
+</nav>
+<button id="back">↩ رجوع للجزيرة</button>
+<div id="tag"></div>
+<div id="hint">اسحب للتدوير · اضغط على أي لعبة</div>
 
-window.go=k=>openP(k);render();
-function fallback(){document.body.classList.add("flat");load.style.opacity=0;setTimeout(()=>load.remove(),900)}
-try{const g=document.createElement("canvas");if(!(g.getContext("webgl2")||g.getContext("webgl")))fallback()}catch(e){fallback()}
-setTimeout(()=>{if(document.getElementById("load")&&!window.parkReady)fallback()},15000);
-</script>
-<script type="module" src="park.js"></script>
+<section class="card" id="p-about"><button class="x" aria-label="إغلاق">✕</button>
+<h2>عنّي</h2><div class="av">ج</div>
+<h3 style="margin:4px 0">جاسم محمد</h3><div style="opacity:.75;margin-bottom:10px">Full-Stack Developer · العراق</div>
+<p style="line-height:1.8;clear:both">مطوّر Full-Stack من بغداد، أشتغل بالغالب على Laravel وReact وASP.NET Core وFlutter، وأبني تطبيقات ويب وموبايل قابلة للتوسع. دائماً أتعلم ودائماً أبرمج.</p>
+<a class="btn" href="https://github.com/jasbx222" target="_blank" rel="noopener">GitHub · jasbx222</a></section>
+
+<section class="card" id="p-projects"><button class="x" aria-label="إغلاق">✕</button>
+<h2>المشاريع</h2><h3 id="pj-name" style="direction:ltr;text-align:right;margin:6px 0"></h3><p id="pj-desc" style="margin:4px 0 8px;line-height:1.6"></p><div id="pj-tech"></div>
+<a class="btn" id="pj-gh" target="_blank" rel="noopener">GitHub</a><ul class="pl" id="pj-list"></ul></section>
+
+<section class="card" id="p-skills"><button class="x" aria-label="إغلاق">✕</button>
+<h2>المهارات</h2><div id="sk"></div></section>
+
+<section class="card" id="p-contact"><button class="x" aria-label="إغلاق">✕</button>
+<h2>تواصل</h2>
+<a class="row" href="https://github.com/jasbx222" target="_blank" rel="noopener" style="color:inherit;text-decoration:none"><span class="ic">G</span><div><b>GitHub</b><div style="direction:ltr;text-align:right">jasbx222</div></div></a>
+<div class="row soon"><span class="ic">@</span><div><b>الإيميل</b><div>قريباً</div></div></div>
+<div class="row soon"><span class="ic">W</span><div><b>واتساب</b><div>قريباً</div></div></div>
+<div class="row soon"><span class="ic">in</span><div><b>لينكد إن</b><div>قريباً</div></div></div>
+<a class="btn pri" href="https://github.com/jasbx222" target="_blank" rel="noopener">أرسل رسالة عبر GitHub</a></section>
+
+<section id="tl"><button class="x" aria-label="إغلاق">✕</button><h2>الخبرة</h2>
+<div class="line" id="tl-line"></div><p style="text-align:center;opacity:.7;margin:10px 0 0;font-size:14px">محطات الخبرة راح تنضاف قريباً</p></section>
+<script type="module" src="./park.js"></script>
 </body></html>
