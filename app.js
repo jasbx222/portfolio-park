@@ -20,7 +20,7 @@ const X=`<button class="x" aria-label="إغلاق" data-close>✕</button>`;
 const CARDS={
  about:{box:[866,125,1244,640],html:`${X}<h1 style="margin-top:calc(var(--u)*70)">عنّي</h1><h2 style="font-size:calc(var(--u)*34);margin-top:calc(var(--u)*14)">جاسم محمد</h2><p style="direction:rtl">مطوّر Full Stack</p><p style="margin-top:calc(var(--u)*22)">أعمل في تطوير الويب</p><p>أحب البرمجة والتصميم</p>`},
  skills:{box:[864,86,1262,637],html:`<h1 style="font-size:calc(var(--u)*48);margin:calc(var(--u)*4) 0 0">المهارات</h1><div class="rule" style="width:46%"></div>`+SKILLS.map(g=>`<div class="grp">${g.g}</div><div class="chips" style="margin:calc(var(--u)*6) 0;direction:ltr">${g.s.map(s=>`<span class="chip">${s}</span>`).join("")}</div>`).join("")},
- experience:{box:[262,575,1078,705],cls:"exp",html:`${X}<h1>الخبرة</h1><div class="ms">${[1,2,3,4].map(i=>`<div class="m"><i></i><span>قريباً</span></div>`).join("")}</div>`},
+ experience:{box:[262,575,1078,705],cls:"exp",html:`${X}<h1>الخبرة</h1><div class="ms">${[1,2,3,4].map(i=>`<div class="m"><i></i></div>`).join("")}</div>`},
  contact:{box:[815,52,1244,672],html:`<h1 style="font-size:calc(var(--u)*70);margin:calc(var(--u)*30) 0 calc(var(--u)*22)">تواصل</h1>
   <a class="row" href="${GH}" target="_blank" rel="noopener">${ICON.gh}<b>GitHub</b><span class="v">jasbx222</span></a>
   <div class="row">${ICON.mail}<b>البريد</b><span class="v">قريباً</span></div>
@@ -35,22 +35,24 @@ function houseCard(p){ return `${X}<h1>${p.title}</h1><div class="rule"></div><d
  ${p.extra?`<a class="comp" href="${GH+p.extra}" target="_blank" rel="noopener">+ ${p.extra}</a>`:""}`; }
 const padb=b=>b[1]>500?[b[0]-6,b[1]-6,b[2]+6,b[3]+6]:[b[0]-8,b[1]-8,Math.min(1278,b[2]+28),Math.min(716,b[3]+12)];
 const pct=(b)=>`left:${b[0]/12.8}%;top:${b[1]/7.2}%;width:${(b[2]-b[0])/12.8}%;height:${(b[3]-b[1])/7.2}%`;
+const cat=(x,y,f)=>`<div class="cat pl" style="left:${x/12.8}%;top:${(y-26)/7.2}%;width:${24/12.8}%;height:${26/7.2}%;${f?"transform:scaleX(-1)":""}"><svg viewBox="0 0 24 26"><path d="M6 25c-1-6 0-11 3-14l-1-5 3 3h3l3-3-1 5c2 3 3 8 2 14z" fill="#16100c"/><circle cx="10" cy="11" r=".8" fill="#e8c35a"/><circle cx="14" cy="11" r=".8" fill="#e8c35a"/><path class="tail" d="M18 24c4 0 5-3 4-7" stroke="#16100c" stroke-width="2" fill="none" stroke-linecap="round"/></svg></div>`;
+let STRIPS=""; for(let i=0;i<6;i++){ const x0=25+i*112, w=118; STRIPS+=`<div class="strip pl" style="left:${x0/12.8}%;top:${367/7.2}%;width:${w/12.8}%;height:${125/7.2}%;background-image:url(img/d04-skills.webp);background-size:${1280/w*100}% ${720/125*100}%;background-position:${x0/(1280-w)*100}% ${367/(720-125)*100}%;animation-delay:${-i*0.55}s"></div>`; }
 const VIEWS={
  home:{img:"d01-main",focus:.5,hots:[
    {to:"about",b:[20,0,345,255],t:"القلعة — عنّي"},{to:"about",b:[600,40,720,330],t:"برج الساعة — عنّي"},
    {to:"projects",b:[120,205,430,385],t:"قاعة المعارض — المشاريع"},{to:"skills",b:[215,375,415,555],t:"الدوّامة — المهارات"},
    {to:"experience",b:[460,395,800,565],t:"القطار — الخبرة"},{to:"experience",b:[730,315,900,420],t:"المحطة — الخبرة"},
    {to:"contact",b:[935,200,1165,375],t:"مكتب البريد — تواصل"},{to:"contact",b:[1015,70,1110,215],t:"المنطاد — تواصل"}],
-  extra:`<img class="spr bob" src="img/dragon0.webp" style="${pct([800,32,1100,215])}"><img class="spr bob" src="img/dragon1.webp" style="${pct([1110,95,1278,300])};animation-delay:-2s">
+  extra:`<div class="wheel pl" style="${pct([318,70,506,258])};background-image:url(img/d01-main.webp);background-size:${1280/188*100}% ${720/188*100}%;background-position:${318/(1280-188)*100}% ${70/(720-188)*100}%"></div><img class="spr pl train" src="img/trainA.webp" style="${pct([462,392,790,578])}">${cat(372,592,1)}<img class="spr bob" src="img/dragon0.webp" style="${pct([800,32,1100,215])}"><img class="spr bob" src="img/dragon1.webp" style="${pct([1110,95,1278,300])};animation-delay:-2s">
    <div class="glow" style="${pct([150,560,190,600])}"></div><div class="glow" style="${pct([700,560,730,590])};animation-delay:-.7s"></div><div class="glow" style="${pct([1040,520,1070,550])};animation-delay:-1.1s"></div>`,
   smoke:[[490,498]]},
  about:{img:"d02-about",focus:.36,card:"about",extra:`<div class="glow" style="${pct([196,355,246,405])}"></div><div class="glow" style="${pct([416,350,466,400])};animation-delay:-.5s"></div><div class="glow" style="${pct([602,340,652,390])};animation-delay:-1s"></div><div class="glow" style="${pct([670,520,720,570])};animation-delay:-.3s"></div><div class="glow" style="${pct([352,575,408,630])};animation-delay:-1.3s"></div>`, flags:[[279,447,340,650],[470,433,515,600],[355,302,406,398]]},
- skills:{img:"d04-skills",focus:.36,card:"skills",extra:`<div class="board" style="${pct([448,256,562,293])}">Laravel</div><div class="board" style="${pct([596,256,702,293])};font-size:calc(var(--u)*16)">NestJS</div>
+ skills:{img:"d04-skills",focus:.36,card:"skills",extra:`<div class="board pl" style="${pct([448,256,562,293])}">Laravel</div><div class="board pl" style="${pct([596,256,702,293])};font-size:calc(var(--u)*13)">ASP.NET Core</div><div class="board pl" style="${pct([702,254,732,295])}"></div>${STRIPS}
    <div class="glow" style="${pct([20,445,60,485])}"></div><div class="glow" style="${pct([750,455,790,495])};animation-delay:-.6s"></div><div class="glow" style="${pct([40,545,90,595])};animation-delay:-1.2s"></div>`},
- experience:{img:"d05-experience",focus:.5,card:"experience",extra:"",smoke:[[552,385]]},
+ experience:{img:"d05-experience",focus:.5,card:"experience",flags:[[178,140,201,215],[268,135,293,200],[74,245,100,300]],extra:`<img class="spr pl train" src="img/trainB.webp" style="${pct([482,392,795,528])}"><div class="wheel pl" style="${pct([322,64,506,248])};background-image:url(img/d05-experience.webp);background-size:${1280/184*100}% ${720/184*100}%;background-position:${322/(1280-184)*100}% ${64/(720-184)*100}%"></div>`,smoke:[[552,385]]},
  contact:{img:"d06-contact",focus:.33,card:"contact",extra:`<div class="glow" style="${pct([280,505,340,560])}"></div><div class="glow" style="${pct([365,460,405,500])};animation-delay:-.8s"></div>`},
  projects:{img:"h00-street",focus:.5,hots:PROJECTS.map((p,i)=>({house:i,b:p.hot,t:`${p.title} — ${p.latin}`})),
-  extra:`<div class="glow" style="${pct([170,445,220,495])}"></div><div class="glow" style="${pct([12,490,52,530])};animation-delay:-.4s"></div><div class="glow" style="${pct([1225,490,1265,530])};animation-delay:-.9s"></div>`, walkers:true, signs:[[57, 415, 162, 450], [207, 415, 290, 449], [346, 422, 444, 452], [491, 415, 603, 449], [646, 415, 746, 449], [821, 415, 918, 449], [971, 415, 1077, 449], [1131, 415, 1243, 449]]},
+  extra:`<div class="glow" style="${pct([170,445,220,495])}"></div><div class="glow" style="${pct([12,490,52,530])};animation-delay:-.4s"></div><div class="glow" style="${pct([1225,490,1265,530])};animation-delay:-.9s"></div>`, walkers:true,catx:1, signs:[[57, 415, 162, 450], [207, 415, 290, 449], [346, 422, 444, 452], [491, 415, 603, 449], [646, 415, 746, 449], [821, 415, 918, 449], [971, 415, 1077, 449], [1131, 415, 1243, 449]]},
 };
 PROJECTS.forEach((p,i)=>VIEWS["h"+i]={img:p.img,focus:.3,house:i});
 const stage=document.getElementById("stage"), vp=document.getElementById("vp");
@@ -59,8 +61,9 @@ const LADY=`<svg viewBox="0 0 24 50"><circle cx="12" cy="7" r="4" fill="#1b1210"
 for(const [k,v] of Object.entries(VIEWS)){
   const d=document.createElement("section"); d.className="view"; d.dataset.v=k;
   let h=`<div class="bg"><img src="img/${v.img}.webp" alt="" draggable="false"></div>${v.extra||""}`;
-  (v.flags||[]).forEach(f=>h+=`<div class="flag" style="${pct(f)};background-image:url(img/${v.img}.webp);background-position:-${f[0]}px -${f[1]}px;background-size:1280px 720px"></div>`);
+  (v.flags||[]).forEach(f=>{const w=f[2]-f[0],hh=f[3]-f[1]; h+=`<div class="flag pl" style="${pct(f)};background-image:url(img/${v.img}.webp);background-size:${1280/w*100}% ${720/hh*100}%;background-position:${f[0]/(1280-w)*100}% ${f[1]/(720-hh)*100}%"></div>`});
   if(v.walkers) [[ 120,640,46,"-420",38,WALK],[880,655,48,"-360",44,LADY],[300,660,40,"500",52,WALK]].forEach(([x,y,hh,dd,dur,svg])=>h+=`<div class="walker" style="left:${x/12.8}%;top:${(y-hh)/7.2}%;width:${hh*.42/12.8}%;height:${hh/7.2}%;--d:calc(var(--u)*${dd});animation-duration:${dur}s;opacity:.85;${+dd>0?"":"transform:scaleX(-1)"}">${svg}</div>`);
+  if(v.catx) h+=cat(300,606,0)+cat(1012,604,1)+cat(655,560,0);
   (v.hots||[]).forEach(o=>h+=`<a class="hot" tabindex="0" role="button" style="${pct(o.b)}" data-t="${o.t}" ${o.to?`data-to="${o.to}"`:`data-house="${o.house}"`}></a>`);
   if(v.card) h+=`<div class="card ${CARDS[v.card].cls||""}" style="${pct(padb(CARDS[v.card].box))}">${orns}${CARDS[v.card].html}</div>`;
   if(v.house!=null) h+=`<div class="card" style="${pct(padb(PROJECTS[v.house].box))}">${orns}${houseCard(PROJECTS[v.house])}</div>`;
@@ -71,21 +74,23 @@ for(const [k,v] of Object.entries(VIEWS)){
   const s=document.createElement("img"); s.src="img/dragon1.webp"; s.className="fly"; s.style.cssText=`offset-path:path("${path}");animation-duration:${dur}s;width:calc(var(--u)*54);${k==="projects"?"":"transform:scaleX(-1)"}`;
   const w=document.createElement("div"); w.style.cssText="position:absolute;inset:0;pointer-events:none;overflow:hidden"; s.classList.add("flap"); w.appendChild(s); VIEWS[k].el.appendChild(w); });
 // layout
-let mobile=false, cur=null, scale=1;
+let mobile=false, cur=null, scale=1, fitAll=true;
 function layout(){ const W=innerWidth,H=innerHeight; mobile=W<=820&&H>W;
-  scale=mobile?H/720:Math.max(W/1280,H/720); const sw=1280*scale, sh=720*scale;
+  const FIT=mobile&&fitAll&&cur==="home"; document.body.classList.toggle("fitall",FIT);
+  scale=FIT?W/1280:mobile?H/720:Math.max(W/1280,H/720); const sw=1280*scale, sh=720*scale;
   stage.style.transform=`scale(${scale})`; stage.style.setProperty("--u","1px");
-  if(mobile){ stage.style.left="0px"; stage.style.top="0px"; stage.parentElement.style.width=""; stage.style.marginRight="0"; vp.firstElementChild; document.getElementById("stage").style.width="1280px"; vp.style.setProperty("--sw",sw+"px"); spacer.style.width=sw+"px"; focusTo(VIEWS[cur||"home"].focus,false); }
+  if(FIT){ spacer.style.width="0px"; stage.style.left="0px"; stage.style.top=(H-720*scale)/2+"px"; vp.scrollLeft=0; }
+  else if(mobile){ stage.style.left="0px"; stage.style.top="0px"; stage.parentElement.style.width=""; stage.style.marginRight="0"; vp.firstElementChild; document.getElementById("stage").style.width="1280px"; vp.style.setProperty("--sw",sw+"px"); spacer.style.width=sw+"px"; focusTo(VIEWS[cur||"home"].focus,false); }
   else { spacer.style.width="0px"; stage.style.left=(W-sw)/2+"px"; stage.style.top=(H-sh)/2+"px"; } clampCard(); }
 function clampCard(){ prev.style.left=next.style.left=prev.style.right=next.style.right=""; if(mobile||!cur) return; const card=VIEWS[cur].el.querySelector(".card"); if(!card) return;
   if(!card.dataset.css) card.dataset.css=card.style.cssText; card.style.cssText=card.dataset.css; const sl=parseFloat(stage.style.left)||0, st=parseFloat(stage.style.top)||0, R=()=>({left:sl+card.offsetLeft*scale,top:st+card.offsetTop*scale,width:card.offsetWidth*scale,height:card.offsetHeight*scale,get right(){return this.left+this.width},get bottom(){return this.top+this.height}}); let r=R(); const W=innerWidth,H=innerHeight, isH=VIEWS[cur].house!=null;
-  if(r.right>W-16){ card.style.width=(r.width-(r.right-W+16))/scale+"px"; }
+  const MR=isH?76:16; if(r.right>W-MR){ card.style.width=(r.width-(r.right-W+MR))/scale+"px"; }
   if(r.bottom>H-12){ card.style.height=(r.height-(r.bottom-H+12))/scale+"px"; }
   if(r.left<16) card.style.marginLeft=(16-r.left)/scale+"px";
   r=R();
   if(isH){ const L=Math.max(8,r.left-58)+"px"; next.style.left=L; prev.style.left=L; prev.style.right=next.style.right="auto"; prev.style.marginTop="-40px"; next.style.marginTop="40px"; } else prev.style.marginTop=next.style.marginTop=""; }
 const spacer=document.createElement("div"); spacer.style.cssText="height:1px;position:absolute;top:0;left:0"; vp.appendChild(spacer);
-function focusTo(f,smooth=true){ if(!mobile) return; const sw=1280*scale; vp.scrollTo({left:Math.max(0,f*sw-innerWidth/2),behavior:smooth?"smooth":"auto"}); }
+function focusTo(f,smooth=true){ if(!mobile||document.body.classList.contains('fitall')) return; const sw=1280*scale; vp.scrollTo({left:Math.max(0,f*sw-innerWidth/2),behavior:smooth?"smooth":"auto"}); }
 addEventListener("resize",layout);
 // navigation
 let prev,next;
@@ -108,7 +113,8 @@ const openHouse=i=>show("h"+((i+8)%8));
 back.onclick=goBack; prev.onclick=()=>openHouse(VIEWS[cur].house-1); next.onclick=()=>openHouse(VIEWS[cur].house+1);
 nav.querySelectorAll("button").forEach(b=>b.onclick=()=>show(b.dataset.v));
 const tip=document.getElementById("tip");
-stage.addEventListener("click",e=>{ const h=e.target.closest(".hot"); if(!h) return; const r=h.getBoundingClientRect(), s=VIEWS[cur].el.getBoundingClientRect();
+function zoomIn(){ if(!document.body.classList.contains('fitall')) return; fitAll=false; layout(); requestAnimationFrame(()=>focusTo(.42,false)); }
+stage.addEventListener("click",e=>{ const h=e.target.closest(".hot"); if(!h){ zoomIn(); return; } fitAll=false; const r=h.getBoundingClientRect(), s=VIEWS[cur].el.getBoundingClientRect();
   const o=`${(r.left+r.width/2-s.left)/s.width*100}% ${(r.top+r.height/2-s.top)/s.height*100}%`; tip.style.display="none";
   h.dataset.to?show(h.dataset.to,o):show("h"+h.dataset.house,o); });
 stage.addEventListener("keydown",e=>{ if(e.key==="Enter"&&e.target.classList.contains("hot")) e.target.click(); });
@@ -126,7 +132,7 @@ function toScreen(x,y){ const r=stage.getBoundingClientRect(); return [r.left+x*
 let last=performance.now();
 function frame(t){ const dt=Math.min(.05,(t-last)/1000); last=t; fx.width=innerWidth*devicePixelRatio; fx.height=innerHeight*devicePixelRatio; c.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0);
   if(!reduced){ tx+=(mx-tx)*.06; ty+=(my-ty)*.06; }
-  const v=cur&&VIEWS[cur]; if(v){ const img=v.el.querySelector(".bg img"); img.style.transform=`translate(${-tx*14}px,${-ty*10}px) scale(1.01)`;
+  const v=cur&&VIEWS[cur]; if(v){ const img=v.el.querySelector(".bg img"); img.style.transform=`translate(${-tx*14}px,${-ty*10}px) scale(1.01)`; v.el.style.setProperty('--px',(-tx*14/scale)+'px'); v.el.style.setProperty('--py',(-ty*10/scale)+'px');
     v.el.querySelectorAll(".spr,.glow,.flag,.board,.walker").forEach(()=>{});
     // smoke
     (v.smoke||[]).forEach(([x,y])=>{ if(Math.random()<dt*7) puffs.push({x,y,life:1,vx:8+Math.random()*6,vy:-18-Math.random()*8,r:5}); });
@@ -144,5 +150,6 @@ const m=location.hash.match(/^#(\w+)(?:\/(.+))?/); let start="home";
 if(m){ if(m[1]==="projects"&&m[2]){ const i=PROJECTS.findIndex(p=>p.repo===decodeURIComponent(m[2])); start=i>=0?"h"+i:"projects"; } else if(VIEWS[m[1]]) start=m[1]; }
 const imgs=[...stage.querySelectorAll(".bg img")]; let shown=false; const boot=()=>{ if(shown) return; shown=true; show(start); const L=document.getElementById("load"); L.style.opacity=0; setTimeout(()=>L.remove(),900); requestAnimationFrame(frame); };
 imgs[0].decode?imgs[0].decode().then(boot,boot):imgs[0].onload=boot; setTimeout(boot,4000);
-const hint=document.createElement('div');hint.id='hint';hint.textContent='⟷ اسحب يميناً ويساراً لاستكشاف المدينة';document.body.appendChild(hint);let sc0=0;vp.addEventListener('scroll',()=>{if(++sc0>8)hint.classList.add('gone')});setTimeout(()=>hint.classList.add('gone'),7000);
+const zb=document.createElement('button');zb.id='zoomin';zb.textContent='🔍 اضغط للتكبير واستكشاف المدينة';zb.onclick=zoomIn;document.body.appendChild(zb);
+const hint=document.createElement('div');hint.id='hint';hint.textContent='⟷ اسحب يميناً ويساراً لاستكشاف المدينة';document.body.appendChild(hint);let sc0=0;vp.addEventListener('scroll',()=>{if(++sc0>8)hint.classList.add('gone')});
 window.__open=k=>show(k); window.__house=i=>openHouse(i); window.__home=()=>show("home");
