@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Jassim Mohammed | Portfolio Park</title>
+<meta name="description" content="Jassim Mohammed, full-stack developer from Iraq. Explore his portfolio as a 3D amusement park.">
+<meta name="theme-color" content="#120b2e">
+<style>
+*{box-sizing:border-box}html,body{margin:0;height:100%;overflow:hidden;background:#120b2e;font-family:system-ui,"Segoe UI",Tahoma,sans-serif;color:#fff}
+#c{position:fixed;inset:0;display:block}
+#load{position:fixed;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:radial-gradient(#2b1760,#0b0620);z-index:20;transition:opacity .6s}
+#load h1{margin:0 0 8px;font-size:clamp(22px,5vw,40px)}#bar{width:220px;height:6px;background:#ffffff22;border-radius:6px;overflow:hidden}#bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,#ff4fa3,#ffd23f);transition:width .2s}
+#top{position:fixed;top:12px;inset-inline:12px;display:flex;justify-content:space-between;align-items:center;z-index:5;pointer-events:none}
+#top>*{pointer-events:auto}.brand{font-weight:700;background:#0008;padding:8px 14px;border-radius:20px;backdrop-filter:blur(6px)}
+.btns button,#nav button{background:#0009;color:#fff;border:1px solid #fff3;border-radius:20px;padding:8px 14px;cursor:pointer;font:inherit;margin-inline-start:6px}
+.btns button:hover,#nav button:hover,#nav button.on{background:#ff4fa3}
+#nav{position:fixed;bottom:14px;left:50%;transform:translateX(-50%);display:flex;flex-wrap:wrap;justify-content:center;gap:6px;z-index:5;max-width:96vw}
+#nav button{margin:0}
+#panel{position:fixed;top:64px;inset-inline-end:12px;width:min(400px,calc(100vw - 24px));max-height:calc(100vh - 140px);overflow:auto;background:#140c34ee;border:1px solid #ff4fa355;border-radius:16px;padding:18px 20px;z-index:6;transform:translateY(20px);opacity:0;pointer-events:none;transition:.35s}
+#panel.show{opacity:1;transform:none;pointer-events:auto}#panel h2{margin:0 0 4px;color:#ffd23f}#panel .ride{opacity:.7;font-size:13px;margin-bottom:10px}
+#panel a{color:#7fe3ff}.chip{display:inline-block;background:#ffffff18;border-radius:12px;padding:3px 10px;margin:3px;font-size:13px}
+.card{background:#ffffff10;border-radius:10px;padding:10px 12px;margin:8px 0}.card b{color:#ffb3d9}.ph{color:#ffd23f;border:1px dashed #ffd23f;padding:1px 6px;border-radius:6px}
+#x{position:absolute;top:10px;inset-inline-end:12px;background:none;border:0;color:#fff;font-size:22px;cursor:pointer}
+#hint{position:fixed;bottom:64px;left:50%;transform:translateX(-50%);opacity:.75;font-size:13px;z-index:4;text-align:center}
+#flat{display:none;position:fixed;inset:0;overflow:auto;background:linear-gradient(#2b1760,#120b2e);padding:80px 16px 40px;z-index:4}
+#flat .wrap{max-width:820px;margin:auto}#flat section{background:#ffffff10;border-radius:16px;padding:16px 20px;margin-bottom:16px}#flat h2{color:#ffd23f;margin-top:0}
+body.flat #flat{display:block}body.flat #nav,body.flat #panel,body.flat #hint{display:none}
+</style>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.160.0/build/three.module.js"}}</script>
+</head>
+<body>
+<div id="load"><h1>🎡 Portfolio Park</h1><p id="lt">Opening the gates…</p><div id="bar"><i></i></div></div>
+<canvas id="c"></canvas>
+<div id="top"><div class="brand" id="brand">Jassim Mohammed</div><div class="btns"><button id="lang">العربية</button><button id="mode">2D</button></div></div>
+<div id="hint"></div>
+<div id="nav"></div>
+<div id="panel"><button id="x">×</button><div id="pc"></div></div>
+<div id="flat"><div class="wrap" id="fc"></div></div>
+<script>
+// ---------- content (from public GitHub github.com/jasbx222) ----------
+const GH="https://github.com/jasbx222/";
+const PROJ=[
+ ["Dawwerli","ASP.NET Core 8 · PostgreSQL · Flutter","dawwerli-api","Backend API, Flutter app and seller/admin dashboard demos.","واجهة برمجية خلفية وتطبيق Flutter وعروض للوحة البائع والإدارة."],
+ ["Delivery Management System","ASP.NET","Delivery-Management-System","Full delivery management system.","نظام متكامل لإدارة التوصيل."],
+ ["Qi Card Payment Test","ASP.NET","Qi-Card-Payment-Integrate-Test-With-Asp.net","Demo store integrating the Qi Card payment gateway.","متجر تجريبي لربط بوابة الدفع كي كارد."],
+ ["Clinic System","Laravel · React","Clinic-Management-System-Backend","Clinic backend plus landing page, dashboard and booking.","باك اند عيادة مع صفحة تعريفية ولوحة تحكم وحجز."],
+ ["AI Restaurant Agent","Laravel · React","Ai-Agent-resturant","AI-assisted restaurant app.","تطبيق مطعم مدعوم بالذكاء الاصطناعي."],
+ ["Payroll Payment App","React · Laravel","payroll-payment-app-","Smart payroll disbursement management.","تطبيق ذكي لإدارة صرف الرواتب."],
+ ["Multi-Tenant PM System","Laravel","Multi-Tenant-Project-Management-System-Laravel","Multi-tenant project management.","نظام إدارة مشاريع متعدد المستأجرين."],
+ ["Travel & Hotels Dashboard","React · TypeScript","travel-and-hotels-booking-APP-Dashbord","Control center for travel operations.","لوحة تحكم لإدارة عمليات السفر والفنادق."],
+ ["E-Commerce API","Laravel","ECommerce-Api","Backend serving a dashboard and a mobile app.","باك اند يخدم لوحة تحكم وتطبيق موبايل."],
+ ["React Native E-commerce","React Native · Expo","ecommerce-app","Mobile shopping app.","تطبيق تسوق للموبايل."],
+ ["Chat App","NestJS","chat-app","Real-time chat with NestJS.","تطبيق دردشة بـ NestJS."],
+ ["Real Estate Website","Next.js","Real-estate-website","Real estate site built with Next.js.","موقع عقارات مبني بـ Next.js."]];
+const SKILLS={"Backend":["Laravel / PHP","ASP.NET Core / C#","NestJS","Node.js","PostgreSQL","MySQL","SQL Server","REST · JWT · Swagger"],"Frontend":["React","Next.js","TypeScript","Vue.js","Redux Toolkit","MUI"],"Mobile":["Flutter / Dart","React Native · Expo"]};
+const T={
+en:{name:"Jassim Mohammed",hint:"Drag to look around · tap a ride to open it",load:"Opening the gates…",lang:"العربية",
+ nav:{about:"About",skills:"Skills",projects:"Projects",exp:"Experience",contact:"Contact"},
+ ride:{about:"🎡 Ferris Wheel",skills:"🎠 Carousel",projects:"🎢 Roller Coaster",exp:"🎪 Big Top Tent",contact:"🎯 Game Booth"},
+ about:`<p>Full-stack web developer from Iraq (Baghdad). Laravel, React and building scalable web apps. Always learning, always coding.</p><p>Open to remote work.</p><p class="card">${67} public repositories on <a href="${GH}" target="_blank">GitHub</a>: web, APIs, dashboards and mobile apps.</p>`,
+ exp:`<p>Most of my work is visible as public repositories: e-commerce, delivery, clinic, payroll, travel and POS systems, from backend APIs to dashboards and mobile apps.</p><div class="card"><span class="ph">PLACEHOLDER</span> Work history (roles, dates) to be added by Jassim.</div>`,
+ contact:`<div class="card">GitHub: <a href="${GH}" target="_blank">github.com/jasbx222</a></div><div class="card">Email: <span class="ph">PLACEHOLDER: email</span></div><div class="card">LinkedIn: <span class="ph">PLACEHOLDER: LinkedIn</span></div><div class="card">CV: <span class="ph">PLACEHOLDER: CV link</span></div>`},
+ar:{name:"جاسم محمد",hint:"اسحب للتلفّت · اضغط على لعبة لفتحها",load:"نفتح البوابة…",lang:"English",
+ nav:{about:"نبذة",skills:"المهارات",projects:"المشاريع",exp:"الخبرة",contact:"تواصل"},
+ ride:{about:"🎡 دولاب الهواء",skills:"🎠 الدوّامة",projects:"🎢 القطار السريع",exp:"🎪 خيمة السيرك",contact:"🎯 كشك الألعاب"},
+ about:`<p>مطوّر ويب Full-Stack من العراق (بغداد). أعمل بـ Laravel وReact وأبني تطبيقات ويب قابلة للتوسع. أتعلم دائماً وأبرمج دائماً.</p><p>متاح للعمل عن بُعد.</p><p class="card">67 مستودعاً عاماً على <a href="${GH}" target="_blank">GitHub</a>: مواقع وواجهات برمجية ولوحات تحكم وتطبيقات موبايل.</p>`,
+ exp:`<p>أغلب أعمالي منشورة كمستودعات عامة: أنظمة متاجر وتوصيل وعيادات ورواتب وسفر ونقاط بيع، من الباك اند إلى لوحات التحكم وتطبيقات الموبايل.</p><div class="card"><span class="ph">قيد الإضافة</span> السجل الوظيفي (المناصب والتواريخ) يضيفه جاسم.</div>`,
+ contact:`<div class="card">GitHub: <a href="${GH}" target="_blank">github.com/jasbx222</a></div><div class="card">البريد: <span class="ph">قيد الإضافة: البريد</span></div><div class="card">LinkedIn: <span class="ph">قيد الإضافة</span></div><div class="card">السيرة الذاتية: <span class="ph">قيد الإضافة</span></div>`}};
+const KEYS=["about","skills","projects","exp","contact"];
+let L="en";
+function html(k){const t=T[L];
+ if(k==="skills")return Object.entries(SKILLS).map(([g,a])=>`<div class="card"><b>${g}</b><br>${a.map(s=>`<span class="chip">${s}</span>`).join("")}</div>`).join("");
+ if(k==="projects")return PROJ.map(p=>`<div class="card"><b>${p[0]}</b> <small>· ${p[1]}</small><br>${L==="en"?p[3]:p[4]}<br><a href="${GH+p[2]}" target="_blank">${GH.slice(8)+p[2]}</a></div>`).join("");
+ return t[k];}
+function render(){const t=T[L];document.documentElement.lang=L;document.documentElement.dir=L==="ar"?"rtl":"ltr";
+ brand.textContent=t.name;lang.textContent=t.lang;hint.textContent=t.hint;
+ nav.innerHTML=KEYS.map(k=>`<button data-k="${k}">${t.nav[k]}</button>`).join("");
+ nav.querySelectorAll("button").forEach(b=>b.onclick=()=>window.go(b.dataset.k));
+ fc.innerHTML=KEYS.map(k=>`<section><h2>${t.ride[k]} · ${t.nav[k]}</h2>${html(k)}</section>`).join("");
+ if(window.cur)openP(window.cur);}
+function openP(k){window.cur=k;const t=T[L];pc.innerHTML=`<h2>${t.nav[k]}</h2><div class="ride">${t.ride[k]}</div>${html(k)}`;panel.classList.add("show");
+ nav.querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.k===k));}
+x.onclick=()=>{panel.classList.remove("show");window.cur=null;window.go&&window.go(null)};
+lang.onclick=()=>{L=L==="en"?"ar":"en";render()};
+mode.onclick=()=>{document.body.classList.toggle("flat");mode.textContent=document.body.classList.contains("flat")?"3D":"2D"};
+window.go=k=>k&&openP(k);render();
+const fallback=()=>{document.body.classList.add("flat");mode.style.display="none";load.style.opacity=0;setTimeout(()=>load.remove(),600)};
+try{const g=document.createElement("canvas");if(!(g.getContext("webgl2")||g.getContext("webgl")))fallback()}catch(e){fallback()}
+setTimeout(()=>{if(document.getElementById("load")&&!window.parkReady)fallback()},12000);
+</script>
+<script type="module">
+import * as THREE from "three";
+const bar=document.querySelector("#bar i");bar.style.width="40%";
+const cv=document.getElementById("c");
+const R=new THREE.WebGLRenderer({canvas:cv,antialias:devicePixelRatio<2});R.setPixelRatio(Math.min(devicePixelRatio,1.75));R.setSize(innerWidth,innerHeight);
+R.shadowMap.enabled=innerWidth>700;
+const S=new THREE.Scene();S.background=new THREE.Color("#1b1045");S.fog=new THREE.Fog("#1b1045",60,150);
+const C=new THREE.PerspectiveCamera(50,innerWidth/innerHeight,.1,400);
+S.add(new THREE.HemisphereLight("#b9a6ff","#2a1a10",1.1));
+const sun=new THREE.DirectionalLight("#ffd9b0",1.6);sun.position.set(30,50,20);sun.castShadow=true;sun.shadow.mapSize.set(1024,1024);Object.assign(sun.shadow.camera,{left:-60,right:60,top:60,bottom:-60});S.add(sun);
+const M=c=>new THREE.MeshStandardMaterial({color:c,roughness:.6});
+const E=c=>new THREE.MeshStandardMaterial({color:c,emissive:c,emissiveIntensity:1.4});
+const mesh=(g,m,p=[0,0,0],par=S)=>{const o=new THREE.Mesh(g,m);o.position.set(...p);o.castShadow=o.receiveShadow=true;par.add(o);return o};
+// ground + paths
+mesh(new THREE.CircleGeometry(120,48),M("#2f6b3a")).rotation.x=-Math.PI/2;
+const path=mesh(new THREE.RingGeometry(18,24,64),M("#c9a46b"),[0,.02,0]);path.rotation.x=-Math.PI/2;
+// stars
+{const g=new THREE.BufferGeometry(),a=[];for(let i=0;i<600;i++){const t=Math.random()*6.28,p=Math.random()*1.4,r=180;a.push(r*Math.cos(t)*Math.cos(p),r*Math.sin(p)+10,r*Math.sin(t)*Math.cos(p))}g.setAttribute("position",new THREE.Float32BufferAttribute(a,3));S.add(new THREE.Points(g,new THREE.PointsMaterial({color:"#fff",size:.8})))}
+const COL=["#ff4fa3","#ffd23f","#4fd1ff","#7cff6b","#b57bff","#ff7a3d"];
+const anim=[],rides={},hit=[];
+function sign(txt,y,par){const c=document.createElement("canvas");c.width=512;c.height=128;const x=c.getContext("2d");x.fillStyle="#140c34";x.roundRect(0,0,512,128,30);x.fill();x.fillStyle="#ffd23f";x.font="bold 60px system-ui";x.textAlign="center";x.textBaseline="middle";x.fillText(txt,256,66);
+ const s=new THREE.Sprite(new THREE.SpriteMaterial({map:new THREE.CanvasTexture(c)}));s.scale.set(8,2,1);s.position.y=y;par.add(s);}
+function ride(k,ang,build,label,h){const g=new THREE.Group();const r=34;g.position.set(Math.cos(ang)*r,0,Math.sin(ang)*r);g.lookAt(0,0,0);S.add(g);build(g);sign(label,h,g);
+ g.traverse(o=>{if(o.isMesh){o.userData.k=k;hit.push(o)}});rides[k]={g,h};}
+// Ferris wheel
+ride("about",-Math.PI/2,g=>{const w=new THREE.Group();w.position.y=13;g.add(w);
+ for(const z of[-1,1]){mesh(new THREE.TorusGeometry(10,.25,8,48),E("#ff4fa3"),[0,0,z],w);
+  for(let i=0;i<12;i++){const s=mesh(new THREE.CylinderGeometry(.1,.1,10),M("#fff"),[0,0,z],w);s.rotation.z=i*Math.PI/6;s.translateY(5)}}
+ const cabs=[];for(let i=0;i<12;i++){const a=i*Math.PI/6,c=mesh(new THREE.BoxGeometry(1.6,1.6,1.6),M(COL[i%6]),[Math.cos(a)*10,Math.sin(a)*10,0],w);cabs.push(c)}
+ for(const z of[-1.6,1.6])for(const sx of[-1,1]){const l=mesh(new THREE.CylinderGeometry(.3,.3,15),M("#ddd"),[sx*3.5,6.5,z],g);l.rotation.z=sx*.25}
+ anim.push(t=>{w.rotation.z=t*.15;cabs.forEach(c=>c.rotation.z=-w.rotation.z)})},"About",27);
+// Carousel
+ride("skills",-Math.PI/2+1.26,g=>{mesh(new THREE.CylinderGeometry(7,7,.6,32),M("#ffd23f"),[0,.3,0],g);
+ const top=new THREE.Group();g.add(top);mesh(new THREE.ConeGeometry(8,3.5,24),M("#ff4fa3"),[0,8,0],top);mesh(new THREE.CylinderGeometry(.6,.6,7),M("#fff"),[0,4,0],top);
+ const hs=[];for(let i=0;i<8;i++){const a=i*Math.PI/4,h=new THREE.Group();h.position.set(Math.cos(a)*5,0,Math.sin(a)*5);top.add(h);mesh(new THREE.CylinderGeometry(.08,.08,6),M("#ffd23f"),[0,4,0],h);
+  const b=mesh(new THREE.BoxGeometry(1.8,.8,.6),M(COL[i%6]),[0,2.5,0],h);b.rotation.y=-a;hs.push([h,i])}
+ for(let i=0;i<16;i++){const a=i*Math.PI/8;mesh(new THREE.SphereGeometry(.22),E(COL[i%3]),[Math.cos(a)*8,6.4,Math.sin(a)*8],top)}
+ anim.push(t=>{top.rotation.y=t*.5;hs.forEach(([h,i])=>h.position.y=Math.sin(t*2+i)*.5)})},"Skills",12);
+// Roller coaster
+ride("projects",-Math.PI/2+2.52,g=>{const pts=[];for(let i=0;i<120;i++){const a=i/120*Math.PI*2;pts.push(new THREE.Vector3(Math.cos(a)*9,3+5*Math.abs(Math.sin(a*1.5))+2*Math.sin(a*3),Math.sin(a)*6))}
+ const cu=new THREE.CatmullRomCurve3(pts,true);mesh(new THREE.TubeGeometry(cu,200,.25,6,true),E("#4fd1ff"),[0,0,0],g);
+ for(let i=0;i<24;i++){const p=cu.getPoint(i/24);mesh(new THREE.CylinderGeometry(.12,.12,p.y),M("#ccc"),[p.x,p.y/2,p.z],g)}
+ const cars=[];for(let i=0;i<4;i++)cars.push(mesh(new THREE.BoxGeometry(1.4,.8,.9),M(COL[i]),[0,0,0],g));
+ anim.push(t=>cars.forEach((c,i)=>{const u=(t*.06+i*.018)%1;c.position.copy(cu.getPoint(u));c.position.y+=.5;c.lookAt(g.localToWorld(cu.getPoint((u+.01)%1)))}))},"Projects",14);
+// Circus tent
+ride("exp",-Math.PI/2+3.77,g=>{for(let i=0;i<12;i++){const s=mesh(new THREE.CylinderGeometry(6,6,5,2,1,true,i*Math.PI/6,Math.PI/6),M(i%2?"#fff":"#e02c4f"),[0,2.5,0],g);s.material.side=THREE.DoubleSide;
+  const c=mesh(new THREE.ConeGeometry(6.2,5,2,1,true,i*Math.PI/6,Math.PI/6),M(i%2?"#e02c4f":"#fff"),[0,7.5,0],g);c.material.side=THREE.DoubleSide}
+ const f=mesh(new THREE.ConeGeometry(.6,1.4,4),E("#ffd23f"),[0,10.7,0],g);anim.push(t=>f.rotation.y=t*2)},"Experience",13);
+// Game booth
+ride("contact",-Math.PI/2+5.03,g=>{mesh(new THREE.BoxGeometry(7,3.5,4),M("#4b2ca0"),[0,1.75,0],g);mesh(new THREE.BoxGeometry(7.4,.4,4.6),M("#ffd23f"),[0,6.2,0],g);
+ for(let i=0;i<6;i++)mesh(new THREE.BoxGeometry(1.23,1,4.6),M(i%2?"#fff":"#ff4fa3"),[-3.08+i*1.23,5.5,.2],g);
+ for(const x of[-3.3,3.3])mesh(new THREE.CylinderGeometry(.15,.15,2.5),M("#fff"),[x,4.5,2],g);
+ const tg=mesh(new THREE.CylinderGeometry(1,1,.2,24),E("#ff4fa3"),[0,4.6,-1.6],g);tg.rotation.x=Math.PI/2;
+ const bl=[];for(let i=0;i<5;i++)bl.push(mesh(new THREE.SphereGeometry(.6,16,12),M(COL[i]),[-2+i,8+i%2,0],g));
+ anim.push(t=>{tg.rotation.y=Math.sin(t)*.5;bl.forEach((b,i)=>b.position.y=8+Math.sin(t*1.3+i)*.4)})},"Contact",11);
+// lamps + trees + gate
+for(let i=0;i<20;i++){const a=i/20*Math.PI*2,r=i%2?17:25;mesh(new THREE.CylinderGeometry(.08,.08,3),M("#333"),[Math.cos(a)*r,1.5,Math.sin(a)*r]);mesh(new THREE.SphereGeometry(.3),E("#ffe08a"),[Math.cos(a)*r,3.1,Math.sin(a)*r])}
+for(let i=0;i<40;i++){const a=Math.random()*6.28,r=50+Math.random()*40;mesh(new THREE.ConeGeometry(2,5,7),M("#1f4d2a"),[Math.cos(a)*r,2.5,Math.sin(a)*r])}
+{const f=mesh(new THREE.CylinderGeometry(1.2,1.6,1.5,24),M("#88a"),[0,.75,0]);const w=mesh(new THREE.CylinderGeometry(1,1,.2,24),E("#4fd1ff"),[0,1.5,0]);
+ const balloon=[];for(let i=0;i<8;i++)balloon.push(mesh(new THREE.SphereGeometry(.5,12,10),M(COL[i%6]),[Math.cos(i)*3,4,Math.sin(i)*3]));anim.push(t=>balloon.forEach((b,i)=>b.position.y=4+Math.sin(t+i)*.6))}
+bar.style.width="85%";
+// camera
+const home={p:new THREE.Vector3(0,42,62),t:new THREE.Vector3(0,6,0)};
+let cp=home.p.clone(),ct=home.t.clone(),gp=cp.clone(),gt=ct.clone(),orbit=0,drag=null,auto=true;
+window.go=k=>{if(!k){gp.copy(home.p);gt.copy(home.t);auto=true;return}const r=rides[k];const w=r.g.position;const dir=w.clone().normalize();
+ gt.set(w.x,r.h*.45,w.z);gp.copy(w).addScaledVector(dir,-36);gp.y=r.h*.7+4;
+ if(innerWidth<700){gp.addScaledVector(dir,-8);gp.y+=4}auto=false;
+ orbit=0;openP(k)};
+// patch nav to also open panel
+const ray=new THREE.Raycaster(),v=new THREE.Vector2();let down=null;
+cv.addEventListener("pointerdown",e=>{down=[e.clientX,e.clientY];drag=e.clientX});
+addEventListener("pointermove",e=>{if(drag!==null){orbit+=(e.clientX-drag)*.005;drag=e.clientX;auto=false}});
+addEventListener("pointerup",e=>{drag=null;if(!down)return;if(Math.hypot(e.clientX-down[0],e.clientY-down[1])<6){v.set(e.clientX/innerWidth*2-1,-e.clientY/innerHeight*2+1);ray.setFromCamera(v,C);const h=ray.intersectObjects(hit)[0];
+ if(h){const b=document.querySelector(`#nav button[data-k="${h.object.userData.k}"]`);b&&b.click()}}down=null});
+addEventListener("resize",()=>{C.aspect=innerWidth/innerHeight;C.updateProjectionMatrix();R.setSize(innerWidth,innerHeight)});
+const clk=new THREE.Clock();
+R.setAnimationLoop(()=>{const t=clk.getElapsedTime();anim.forEach(f=>f(t));if(auto)orbit+=.0015;
+ cp.lerp(gp,.05);ct.lerp(gt,.05);const o=cp.clone().sub(ct);o.applyAxisAngle(new THREE.Vector3(0,1,0),orbit);C.position.copy(ct).add(o);C.lookAt(ct);
+ if(document.body.classList.contains("flat"))return;R.render(S,C)});
+bar.style.width="100%";window.parkReady=true;const ld=document.getElementById("load");setTimeout(()=>{ld.style.opacity=0;setTimeout(()=>ld.remove(),600)},300);
+</script>
+</body></html>
