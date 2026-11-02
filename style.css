@@ -87,7 +87,7 @@ a.row:hover{background:rgba(220,190,130,.6)}
 @keyframes nudge{0%,100%{margin-left:-8px}50%{margin-left:8px}}
 
 .pl{translate:var(--px,0) var(--py,0)}
-.train{animation:chug 9s ease-in-out infinite alternate}
+.train{transition:none}
 @keyframes chug{from{transform:translate(0,0)}to{transform:translate(calc(var(--u)*7),calc(var(--u)*-2.5))}}
 .wheel{position:absolute;border-radius:50%;clip-path:circle(50%);animation:spin 70s linear infinite;pointer-events:none}
 @keyframes spin{to{rotate:360deg}}
@@ -112,3 +112,5 @@ a.row:hover{background:rgba(220,190,130,.6)}
 .drift{animation:drift 7s ease-in-out infinite alternate}@keyframes drift{to{transform:translate(calc(var(--u)*5),calc(var(--u)*1.5))}}
 .roll{animation:roll 6s ease-in-out infinite alternate}@keyframes roll{to{transform:translate(calc(var(--u)*-5),calc(var(--u)*2))}}
 .sway{animation:sw 1.6s steps(2) infinite}@keyframes sw{50%{transform:translateX(calc(var(--u)*.8))}}
+
+.frames.ring img{animation-duration:2.4s}
