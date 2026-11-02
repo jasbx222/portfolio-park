@@ -114,3 +114,4 @@ a.row:hover{background:rgba(220,190,130,.6)}
 .sway{animation:sw 1.6s steps(2) infinite}@keyframes sw{50%{transform:translateX(calc(var(--u)*.8))}}
 
 .frames.ring img{animation-duration:2.4s}
+.card h1{padding-left:calc(var(--u)*40);font-size:calc(var(--u)*44)!important;line-height:1.15}
