@@ -102,3 +102,4 @@ a.row:hover{background:rgba(220,190,130,.6)}
  body.fitall #hint{display:none}
  body.fitall #vp{overflow:hidden}
 }
+#vp{direction:ltr}#stage{direction:rtl}
