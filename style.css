@@ -50,3 +50,10 @@
  .card h1{font-size:34px}.card p{font-size:15px}
  .arr{top:auto;bottom:calc(62vh + 8px);left:auto;margin:0!important}#prev{right:14px}#next{right:68px}
 }
+
+.xrow{display:flex;align-items:center;gap:14px;justify-content:center;flex-wrap:nowrap;padding:14px 0}
+.xc{width:54px;height:54px;border-radius:50%;border:3px solid #B8913E;background:#f2e6cc;flex:none}
+.xb{width:64px;height:54px;border:2px dashed #CBB27A;border-radius:8px;flex:none}
+@media(min-width:761px){#sheet.exp{top:auto;bottom:24px;left:50%;right:auto;width:min(860px,80vw);transform:translate(-50%,140%)}
+#sheet.exp.open{transform:translate(-50%,0)}}
+@media(max-width:760px){.xc{width:38px;height:38px}.xb{width:42px;height:38px}.xrow{gap:8px}}
