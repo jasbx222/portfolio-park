@@ -10,9 +10,9 @@
 #tip{position:fixed;z-index:20;pointer-events:none;background:linear-gradient(#EBD59A,#B88E3A);color:#1A1617;font:700 16px Amiri,serif;padding:4px 14px;border-radius:5px;box-shadow:0 4px 14px #0008;transform:translate(-50%,-160%);display:none;white-space:nowrap}
 #hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;color:#F3E6CCcc;font:500 13px "IBM Plex Sans Arabic";background:#1A161788;padding:6px 14px;border-radius:16px;transition:opacity 1s;pointer-events:none}
 #load{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(#5a2a26,#1A1617);color:#F3E6CC;font:700 22px Amiri,serif;transition:opacity .9s}
-.arr{position:fixed;top:50%;z-index:7;display:none;width:46px;height:46px;border-radius:50%;border:1px solid #C9A24B;background:#1A1617cc;color:#F3E6CC;font:700 26px Amiri;cursor:pointer;right:calc(min(540px,38vw) + 40px)}
+.arr{position:fixed;top:50%;z-index:7;display:none;width:46px;height:46px;border-radius:50%;border:1px solid #C9A24B;background:#1A1617cc;color:#F3E6CC;font:700 26px Amiri;cursor:pointer;right:calc(min(600px,42vw) + 40px)}
 #prev{margin-top:-30px}#next{margin-top:30px}
-#sheet{position:fixed;z-index:6;top:84px;right:24px;width:min(540px,38vw);max-height:calc(100vh - 120px);transform:translateX(120%);transition:transform .45s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+#sheet{position:fixed;z-index:6;top:84px;right:24px;width:min(600px,42vw);max-height:calc(100vh - 120px);transform:translateX(120%);transition:transform .45s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 #sheet.open{transform:none;pointer-events:auto}
 .card{position:relative;max-height:calc(100vh - 120px);overflow:auto;background:var(--paper);border-radius:12px;box-shadow:0 10px 30px #0009,0 0 0 3px #C9A24B,0 0 0 6px #6a4a1e;padding:40px 40px 34px;display:flex;flex-direction:column;align-items:center;text-align:center;
  background-image:radial-gradient(rgba(120,80,30,.07) 1px,transparent 1px),radial-gradient(ellipse at 50% 40%,#F7EEDC,#EADBBE);background-size:5px 5px,100% 100%}
