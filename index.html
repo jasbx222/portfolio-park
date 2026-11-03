@@ -1,14 +1,16 @@
-<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<!doctype html><html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>جاسم محمد — مدينة التنانين</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Libre+Caslon+Text:wght@700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css"><link rel="icon" href="data:,">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/":"./vendor/"}}</script>
 </head><body>
-<div id="vp"><div id="stage"></div></div>
-<canvas id="fx"></canvas>
+<canvas id="c"></canvas>
+<header id="brand"><b>جاسم محمد</b><span>مطوّر Full Stack</span></header>
 <nav id="nav"><button data-v="about">عنّي</button><button data-v="projects">المشاريع</button><button data-v="skills">المهارات</button><button data-v="experience">الخبرة</button><button data-v="contact">تواصل</button></nav>
 <button id="back">↩ رجوع للمدينة</button>
 <div id="tip"></div>
 <button class="arr" id="prev" aria-label="السابق">›</button><button class="arr" id="next" aria-label="التالي">‹</button>
 <div id="sheet"></div>
+<div id="hint">اسحب للدوران · اضغط على أي مبنى</div>
 <div id="load"><span>جاري فتح بوابة المدينة…</span></div>
-<script src="app.js"></script></body></html>
+<script type="module" src="park3d.js"></script></body></html>
