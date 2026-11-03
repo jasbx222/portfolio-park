@@ -10,33 +10,33 @@
 #tip{position:fixed;z-index:20;pointer-events:none;background:linear-gradient(#EBD59A,#B88E3A);color:#1A1617;font:700 16px Amiri,serif;padding:4px 14px;border-radius:5px;box-shadow:0 4px 14px #0008;transform:translate(-50%,-160%);display:none;white-space:nowrap}
 #hint{position:fixed;bottom:22px;left:50%;transform:translateX(-50%);z-index:4;color:#F3E6CCcc;font:500 13px "IBM Plex Sans Arabic";background:#1A161788;padding:6px 14px;border-radius:16px;transition:opacity 1s;pointer-events:none}
 #load{position:fixed;inset:0;z-index:50;display:grid;place-items:center;background:radial-gradient(#5a2a26,#1A1617);color:#F3E6CC;font:700 22px Amiri,serif;transition:opacity .9s}
-.arr{position:fixed;top:50%;z-index:7;display:none;width:46px;height:46px;border-radius:50%;border:1px solid #C9A24B;background:#1A1617cc;color:#F3E6CC;font:700 26px Amiri;cursor:pointer;left:calc(min(440px,36vw) + 40px)}
+.arr{position:fixed;top:50%;z-index:7;display:none;width:46px;height:46px;border-radius:50%;border:1px solid #C9A24B;background:#1A1617cc;color:#F3E6CC;font:700 26px Amiri;cursor:pointer;right:calc(min(540px,38vw) + 40px)}
 #prev{margin-top:-30px}#next{margin-top:30px}
-#sheet{position:fixed;z-index:6;top:84px;left:24px;width:min(440px,36vw);max-height:calc(100vh - 120px);transform:translateX(-120%);transition:transform .45s cubic-bezier(.2,.7,.2,1);pointer-events:none}
+#sheet{position:fixed;z-index:6;top:84px;right:24px;width:min(540px,38vw);max-height:calc(100vh - 120px);transform:translateX(120%);transition:transform .45s cubic-bezier(.2,.7,.2,1);pointer-events:none}
 #sheet.open{transform:none;pointer-events:auto}
-.card{position:relative;max-height:calc(100vh - 120px);overflow:auto;background:var(--paper);border-radius:12px;box-shadow:0 10px 30px #0009;padding:34px 34px 30px;display:flex;flex-direction:column;align-items:center;text-align:center;
+.card{position:relative;max-height:calc(100vh - 120px);overflow:auto;background:var(--paper);border-radius:12px;box-shadow:0 10px 30px #0009,0 0 0 3px #C9A24B,0 0 0 6px #6a4a1e;padding:40px 40px 34px;display:flex;flex-direction:column;align-items:center;text-align:center;
  background-image:radial-gradient(rgba(120,80,30,.07) 1px,transparent 1px),radial-gradient(ellipse at 50% 40%,#F7EEDC,#EADBBE);background-size:5px 5px,100% 100%}
-.card:before{content:"";position:absolute;inset:10px;border:1.5px solid #CBB27A;border-radius:7px;pointer-events:none;box-shadow:0 0 0 3px #F3E6CC,0 0 0 4px #D9C38F}
+.card:before{content:"";position:absolute;inset:10px;border:4px double #B8913E;border-radius:7px;pointer-events:none;box-shadow:0 0 0 3px #F3E6CC,0 0 0 4px #D9C38F}
 .orn{position:absolute;width:40px;height:40px;pointer-events:none;color:#C9A24B}.orn svg{width:100%;height:100%}
 .orn.tl{top:6px;left:6px}.orn.tr{top:6px;right:6px;transform:scaleX(-1)}.orn.bl{bottom:6px;left:6px;transform:scaleY(-1)}.orn.br{bottom:6px;right:6px;transform:scale(-1)}
 .card .x{position:absolute;top:22px;left:26px;background:none;border:0;color:var(--wine);font:700 26px Amiri;cursor:pointer;line-height:1;z-index:2}
-.card h1{font:700 46px Amiri,serif;margin:6px 0 2px;line-height:1.15;color:#7A2E3A}
-.card h2{font:700 26px Amiri;margin:4px 0}
-.card .lat{font:700 24px "Libre Caslon Text",Georgia,serif;direction:ltr;margin:2px 0}
-.card p{font:500 17px "IBM Plex Sans Arabic";margin:6px 0;line-height:1.6}
+.card h1{font:700 64px Amiri,serif;margin:6px 0 2px;line-height:1.15;color:#7A2E3A}
+.card h2{font:700 36px Amiri;margin:4px 0}
+.card .lat{font:700 32px "Libre Caslon Text",Georgia,serif;direction:ltr;margin:2px 0}
+.card p{font:500 23px "IBM Plex Sans Arabic";margin:6px 0;line-height:1.6}
 .rule{width:62%;height:14px;margin:4px auto;background:linear-gradient(#C9A24B,#C9A24B) center/100% 1.4px no-repeat;position:relative}
 .rule:after{content:"❦";position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);color:#C9A24B;font-size:15px;background:#F0E2C6;padding:0 6px}
 .chips{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:10px 0;direction:ltr}
-.chip{border:1.5px solid #8F7650;border-radius:14px;padding:4px 14px;font:500 15px "IBM Plex Sans Arabic";background:rgba(255,250,238,.55)}
-.grp{font:700 20px "IBM Plex Sans Arabic";margin:10px 0 0;color:#7A2E3A}
-.repo{font:500 14px "IBM Plex Sans Arabic";color:#2A1C14;direction:ltr;text-decoration:none;margin:8px 0;word-break:break-all}
+.chip{border:1.5px solid #8F7650;border-radius:14px;padding:4px 14px;font:500 20px "IBM Plex Sans Arabic";background:rgba(255,250,238,.55)}
+.grp{font:700 27px "IBM Plex Sans Arabic";margin:10px 0 0;color:#7A2E3A}
+.repo{font:500 18px "IBM Plex Sans Arabic";color:#2A1C14;direction:ltr;text-decoration:none;margin:8px 0;word-break:break-all}
 .gh,.send{display:inline-block;background:linear-gradient(#A82424,#6E1414);color:#F3E6CC;font:700 20px "Libre Caslon Text",Georgia,serif;padding:8px 40px;border-radius:5px;text-decoration:none;margin-top:6px;box-shadow:0 3px 0 #3a0c0c}
 .send{font-family:Amiri,serif}
 .comp{font:500 13px "IBM Plex Sans Arabic";color:#5E1A1A;direction:ltr;margin-top:8px}
-.row{display:flex;align-items:center;gap:12px;width:100%;padding:10px 6px;border-bottom:1px solid #CBB27A88;text-decoration:none;color:inherit;font-size:17px}
+.row{display:flex;align-items:center;gap:12px;width:100%;padding:10px 6px;border-bottom:1px solid #CBB27A88;text-decoration:none;color:inherit;font-size:22px}
 .row svg{width:24px;height:24px;flex:none}.row b{font-weight:600}.row .v{margin-inline-start:auto;direction:ltr;color:#5a4a3a}
 .ms{display:flex;flex-direction:column;gap:12px;width:100%;margin-top:10px}
-.m{display:flex;align-items:center;gap:12px;border:1.5px dashed #CBB27A;border-radius:8px;padding:12px;min-height:52px;color:#8a7a66;font-size:15px}
+.m{display:flex;align-items:center;gap:12px;border:1.5px dashed #CBB27A;border-radius:8px;padding:14px;min-height:60px;color:#8a7a66;font-size:20px}
 .m i{width:16px;height:16px;border-radius:50%;background:#C9A24B;box-shadow:0 0 0 3px #F3E6CC,0 0 0 4px #8E1B1B;flex:none}
 @media (max-width:760px){
  #brand{top:12px;right:14px}#brand b{font-size:22px}#brand span{font-size:12px}
